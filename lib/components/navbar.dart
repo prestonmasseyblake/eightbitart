@@ -20,7 +20,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     HomeGrid(),
-    Explore(),
     CreateScreen(),
     ProfileBaseScreen()
   ];
@@ -44,10 +43,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-          ),
+        
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             label: 'Plus',
@@ -60,7 +56,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
-         backgroundColor: Colors.black,
+         backgroundColor: Colors.white,
       ),
     );
   }

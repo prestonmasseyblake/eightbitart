@@ -61,18 +61,10 @@ class HomeGrid extends StatelessWidget {
                                         return Container();
                                       }),
                                   ListTile(
-                                    leading: Image.asset(
-                                      'assets/images/ninja.png',
-                                      width: 30.0,
-                                      height: 30.0,
-                                    ),
+                                   
                                     title:
                                         Text(snapshot.data.items[index].name),
-                                    subtitle: Text(
-                                      'Preston_Blake',
-                                      style: TextStyle(
-                                          color: Colors.black.withOpacity(0.6)),
-                                    ),
+                                  
                                   ),
                                   ButtonBar(
                                     alignment: MainAxisAlignment.start,
@@ -84,7 +76,7 @@ class HomeGrid extends StatelessWidget {
                                       //   },
                                       //   child: Icon(Icons.thumb_up_sharp),
                                       // ),
-                                      Text("12"),
+                                     
                                     ],
                                   ),
                                 ],

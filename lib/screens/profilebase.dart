@@ -45,35 +45,35 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
           },
           body: Column(
             children: <Widget>[
-              Material(
-                color: Colors.white,
-                child: TabBar(
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.grey[400],
-                  indicatorWeight: 1,
-                  indicatorColor: Colors.black,
-                  tabs: [
-                    Tab(
-                      icon: Icon(
-                        Icons.grid_on_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Tab(
-                      icon: Icon(
-                        Icons.grid_on_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Tab(
-                       icon: Icon(
-                        Icons.grid_on_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Material(
+              //   color: Colors.white,
+              //   child: TabBar(
+              //     labelColor: Colors.black,
+              //     unselectedLabelColor: Colors.grey[400],
+              //     indicatorWeight: 1,
+              //     indicatorColor: Colors.black,
+              //     tabs: [
+              //       Tab(
+              //         icon: Icon(
+              //           Icons.grid_on_sharp,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       Tab(
+              //         icon: Icon(
+              //           Icons.grid_on_sharp,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       Tab(
+              //          icon: Icon(
+              //           Icons.grid_on_sharp,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               // Expanded(
               //   child: TabBarView(
               //     children: [

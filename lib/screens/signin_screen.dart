@@ -1,3 +1,4 @@
+import 'package:eightbitart/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../reusable_widgets/reusable_widget.dart';
 import './home_screen.dart';
@@ -12,12 +13,14 @@ class SignInScreen extends StatefulWidget {
 
   @override
   _SignInScreenState createState() => _SignInScreenState();
+   
 }
 
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -27,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
             gradient: LinearGradient(colors: [
           hexStringToColor("CB2B93"),
           hexStringToColor("9546C4"),
-          hexStringToColor("5E61F4")
+          hexStringToColor("000000")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Padding(
@@ -57,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyApp()));
+                        MaterialPageRoute(builder: (context) => Home()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });

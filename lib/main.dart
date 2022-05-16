@@ -6,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'components/test.dart';
 import 'components/navbar.dart';
 import './components/Card.dart';
+import './screens/signin_screen.dart';
+import './screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,112 +16,102 @@ void main() async {
 }
 
 final Storage storage = Storage();
+User? firebaseUser = FirebaseAuth.instance.currentUser;
+// Define a widget
+Widget? firstWidget;
 
+
+// Assign widget based on availability of currentUser
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+if(firebaseUser != null) {
+  firstWidget = Home();
+} else {
+  firstWidget = SignInScreen();
+}
+print(firstWidget);
     return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        // '/': (context) => HomeRoute(),
-      },
-      theme: ThemeData(
-          appBarTheme: AppBarTheme(
-        color: const Color(0xE5E8EB),
-      )),
-      title: '8',
-      home: Scaffold(
-        appBar: AppBar(
-            title: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.add_alert),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('This is a snackbar')));
-                },
-              ),
-            ]),
-        body: GridView.count(
-          primary: true,
-          // padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 1,
-          children: [
-            FutureBuilder(
-                future: storage.listFiles(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      snapshot.hasData) {
-                    return Container(
-                        child: ListView.builder(
-                            itemCount: snapshot.data!.items.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              print(snapshot.data.items[index]);
-                              Text(snapshot.data.items[index].name);
-                              return Card(
-                                clipBehavior: Clip.antiAlias,
-                                child: Column(
-                                  children: [
-                                    FutureBuilder(
-                                        future: storage.downloadedURL(
-                                            snapshot.data.items[index].name),
-                                        builder: (BuildContext context,
-                                            AsyncSnapshot snapshot) {
-                                          if (snapshot.connectionState ==
-                                                  ConnectionState.done &&
-                                              snapshot.hasData) {
-                                            return Container(
-                                                width: 300,
-                                                height: 300,
-                                                child: Image.network(
-                                                    snapshot.data!,
-                                                    fit: BoxFit.cover));
-                                          }
-                                          return Container();
-                                        }),
-                                    ListTile(
-                                      leading: Image.asset(
-                                        'assets/images/ninja.png',
-                                        width: 30.0,
-                                        height: 30.0,
-                                      ),
-                                      title:
-                                          Text(snapshot.data.items[index].name),
-                                      subtitle: Text(
-                                        'Preston_Blake',
-                                        style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.6)),
-                                      ),
-                                    ),
-                                    ButtonBar(
-                                      alignment: MainAxisAlignment.start,
-                                      children: [
-                                        // FlatButton(
-                                        //   textColor: const Color(0xFF6200EE),
-                                        //   onPressed: () {
-                                        //     // Perform some action
-                                        //   },
-                                        //   child: Icon(Icons.thumb_up_sharp),
-                                        // ),
-                                        Text("12"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }));
-                  }
-                  return Container();
-                }),
-          ],
-        ),
-        bottomNavigationBar: const MyStatefulWidget(),
-      ),
-    );
+        home: 
+        
+        
+        firstWidget
+        
+        
+       
+        
+        
+        // Scaffold(
+        //     body: const Home())
+            
+            
+            );
+  
+  
+  //  FutureBuilder<User>(
+  //     future: Future.value(FirebaseAuth.instance.currentUser),
+  //     builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+  //       if (snapshot.hasData) {
+  //     User? user = snapshot.data;
+  //     print("logged in"); // this is your user instance
+     
+  //     return Home();
+  //     return SignInScreen();
+  //       }
+  //       print("not logged in");
+
+  //         return SignInScreen();
+  //       /// other way there is no user logged.
+  //     }));
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   }
 }
+
+
+//  FutureBuilder<User>(
+//       future: Future.value(FirebaseAuth.instance.currentUser),
+//       builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+//         if (snapshot.hasData) {
+//       User? user = snapshot.data;
+//       print("logged in"); // this is your user instance
+//       / is because there is user already logged
+//       return Home();
+//       return SignInScreen();
+//         }
+//         print("not logged in");
+
+//           return SignInScreen();
+//         /// other way there is no user logged.
+//       }));
+
+// Define a widget
+
+
+// Scaffold(
+//       appBar: AppBar(
+//           title: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
+//           actions: <Widget>[
+//             IconButton(
+//               icon: const Icon(Icons.add_alert),
+//               onPressed: () {
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                     const SnackBar(content: Text('This is a snackbar')));
+//               },
+//             ),
+//           ]),
+//            body:  const Home()
+           
+     
+//     )

@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../screens/utils/storage_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:flutter/material.dart';
+import '../screens/utils/storage_service.dart';
+import '../screens/signin_screen.dart';
 
 Widget profileHeaderWidget(BuildContext context) {
-final Storage storage = Storage();
+  final Storage storage = Storage();
+
   return Container(
     width: double.infinity,
     decoration: BoxDecoration(color: Colors.white),
@@ -14,10 +19,10 @@ final Storage storage = Storage();
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 40,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
@@ -26,80 +31,12 @@ final Storage storage = Storage();
                 backgroundImage:
                     NetworkImage("https://placeimg.com/640/480/people"),
               ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "23",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "Posts",
-                        style: TextStyle(
-                          fontSize: 15,
-                          letterSpacing: 0.4,
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "1.5M",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "Followers",
-                        style: TextStyle(
-                          letterSpacing: 0.4,
-                          fontSize: 15,
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "234",
-                        style: TextStyle(
-                          letterSpacing: 0.4,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "Following",
-                        style: TextStyle(
-                          letterSpacing: 0.4,
-                          fontSize: 15,
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                ],
-              )
             ],
           ),
           SizedBox(
             height: 8,
           ),
-           FutureBuilder<String>(
+          FutureBuilder<String>(
             future: storage.getUser(), // async work
             builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
               switch (snapshot.connectionState) {
@@ -109,26 +46,26 @@ final Storage storage = Storage();
                   if (snapshot.hasError)
                     return Text('Error: ${snapshot.error}');
                   else
-                    return Text('${snapshot.data}');
+                    return Text(
+                      '${snapshot.data}',
+                      textAlign: TextAlign.center,
+                    );
               }
             },
           ),
-          SizedBox(
-            height: 4,
-          ),
-          Text(
-            "Lorem Ipsum",
-            style: TextStyle(
-              letterSpacing: 0.4,
+          ElevatedButton(
+            child: Text(
+              'Logout',
             ),
+            onPressed: () {
+              FirebaseAuth.instance.signOut().then((value) {
+                print("Signed Out");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInScreen()));
+              });
+            },
           ),
-          SizedBox(
-            height: 20,
-          ),
-          // actions(context),
-          SizedBox(
-            height: 20,
-          ),
+
           // Container(
           //   height: 85,
           //   child: ListView.builder(

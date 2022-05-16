@@ -13,11 +13,13 @@ class SignUpScreen extends StatefulWidget {
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
+
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -29,14 +31,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Container(
+      body: Container( 
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
             hexStringToColor("CB2B93"),
             hexStringToColor("9546C4"),
-            hexStringToColor("5E61F4")
+            hexStringToColor("000000")
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
               child: Padding(
@@ -77,6 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
           ))),
+        
     );
   }
 }
