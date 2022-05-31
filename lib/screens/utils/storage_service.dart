@@ -7,6 +7,11 @@ class Storage {
   final firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
 
+  checkStorage() {
+    print(storage.ref('test').listAll());
+    
+  }
+
   Future<void> uploadFile(
     String filePath,
     String fileName,
@@ -20,6 +25,7 @@ class Storage {
   }
 
   Future<firebase_storage.ListResult> listFiles() async {
+    print("trying to print results");
     firebase_storage.ListResult results = await storage.ref('test').listAll();
     print(results);
     results.items.forEach((firebase_storage.Reference ref) {

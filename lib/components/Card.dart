@@ -1,6 +1,5 @@
 import '../screens/utils/storage_service.dart';
 import 'package:flutter/material.dart';
-
 import './navbar.dart';
 import './Card.dart';
 
@@ -10,7 +9,7 @@ class HomeGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
           title: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
           actions: <Widget>[
             IconButton(
@@ -61,30 +60,20 @@ class HomeGrid extends StatelessWidget {
                                         return Container();
                                       }),
                                   ListTile(
-                                   
                                     title:
                                         Text(snapshot.data.items[index].name),
-                                  
                                   ),
                                   ButtonBar(
                                     alignment: MainAxisAlignment.start,
-                                    children: [
-                                      // FlatButton(
-                                      //   textColor: const Color(0xFF6200EE),
-                                      //   onPressed: () {
-                                      //     // Perform some action
-                                      //   },
-                                      //   child: Icon(Icons.thumb_up_sharp),
-                                      // ),
-                                     
-                                    ],
+                                    children: [],
                                   ),
                                 ],
                               ),
                             );
                           }));
                 }
-                return Container();
+                storage.checkStorage();
+                return Container(child: const Text("this is empty"));
               }),
         ],
       ),
